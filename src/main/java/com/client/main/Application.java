@@ -4,13 +4,13 @@
 package com.client.main;
 
 import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
 
+import org.apache.catalina.startup.ClassLoaderFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
-import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.boot.logging.LoggingSystem;
+import org.springframework.boot.logging.log4j2.Log4J2LoggingSystem;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,13 +22,12 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan("com.client.*")
 public class Application {
-
+	 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		 SpringApplication.run(Application.class, args);
-
 	}
 
 	@Bean
@@ -46,14 +45,14 @@ public class Application {
 	
 	
 	
-	@Bean
-	public EmbeddedServletContainerFactory servletContainer() {
-		//TODO: Configure Tomcat embided Server
-	    TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
-	    factory.setPort(9000);
-	    factory.setSessionTimeout(10, TimeUnit.MINUTES);
-	    return factory;
-	}
+//	@Bean
+//	public EmbeddedServletContainerFactory servletContainer() {
+//		//TODO: Configure Tomcat embided Server
+//	    TomcatEmbeddedServletContainerFactory factory = new TomcatEmbeddedServletContainerFactory();
+//	    factory.setPort(9000);
+//	    factory.setSessionTimeout(10, TimeUnit.MINUTES);
+//	    return factory;
+//	}
 	
 	
 	

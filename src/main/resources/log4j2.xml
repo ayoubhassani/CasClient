@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Specify the refresh internal in seconds. -->
+<Configuration monitorInterval="5" packages="*">
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d %p [%c] - &lt;%m&gt;%n" />
+		</Console>
+
+		<RollingFile name="file" fileName="c:\\log\\CasClient.log"
+			append="true" filePattern="c:\\log\\CasClient-%d{yyyy-MM-dd-HH}-%i.log">
+			<PatternLayout pattern="%d %p [%c] - &lt;%m&gt;%n" />
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10 MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+		</RollingFile>
+
+
+	</Appenders>
+	<Loggers>
+		<logger level="debug" name="com.client">
+			<AppenderRef ref="console" />
+			<AppenderRef ref="file" />
+		</logger>
+		<root additivity="false" level="ERROR">
+
+			<AppenderRef ref="console" />
+			<AppenderRef ref="file" />
+		</root>
+	</Loggers>
+</Configuration>
